@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "npm test",
-    "preinstall": "babel lib -d dist --presets es2015,stage-2",
+    "preinstall2": "babel lib -d dist --presets es2015,stage-2",
     "start": "node dist/app.js",
     "local": "nodemon lib/app.js --exec babel-node --presets es2015,stage-2"
   },
