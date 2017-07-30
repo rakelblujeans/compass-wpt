@@ -1,9 +1,0 @@
-
-> wpt@0.0.0 start /Users/rakelblujeans/dev/wpt
-> npm run build && node dist/index.js
-
-
-> wpt@0.0.0 build /Users/rakelblujeans/dev/wpt
-> rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files
-
-app.js -> dist/app.js
