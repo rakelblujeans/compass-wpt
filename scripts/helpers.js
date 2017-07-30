@@ -1,6 +1,6 @@
 var https = require('https');
 var MongoClient = require('mongodb').MongoClient;
-var MONGO_URL = 'mongodb://localhost:27017/wpt';
+var MONGO_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/wpt';
 
 // var WebPageTest = require('WebPageTest');
 // var wpt = new WebPageTest('https://www.webpagetest.org/', 'A.5d516bf1ca465c213f41787574d5bb26');
