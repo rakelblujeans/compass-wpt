@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "test": "npm test",
-    "start": "nodemon lib/app.js --exec babel-node --presets es2015,stage-2",
+    "local": "nodemon lib/app.js --exec babel-node --presets es2015,stage-2",
     "build": "babel lib -d dist --presets es2015,stage-2",
-    "serve": "node dist/app.js"
+    "start": "node dist/app.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
