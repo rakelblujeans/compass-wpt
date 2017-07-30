@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/webpagetest', function(req, res, next) {
-  // const testId = req.query.id;
   // res.status(200).send(`Got results! ${req.query.id}`)
   helpers.lookUpTestResults(req.query.id);
 });

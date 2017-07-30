@@ -54,7 +54,7 @@ var MONGO_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/wpt';
 // })
 
 function storeTestResults(result) {
-  // console.log(result);
+  console.log('Storing test results');
   var resultFV = result.average.firstView;
   return;
 
@@ -91,6 +91,7 @@ function storeTestResults(result) {
 
 // Get the result results in json format
 function lookUpTestResults(testId) {
+  console('Looking up test results...');
   const testResultsUrl = `https://www.webpagetest.org/jsonResult.php?test=${testId}`;
   https.get(testResultsUrl, function(res) {
     var body = '';
