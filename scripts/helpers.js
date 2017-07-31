@@ -1,10 +1,9 @@
 var https = require('https');
 
-function storeTestResults(result) {
-  console.log('Storing test results');
+function storeTestResults(result, req) {
   var resultFV = result.average.firstView;
 
-  var collection = db.collection('results');
+  var collection = req.db.collection('results');
   collection.insert({
     testId: result.id,
     url: result.url,
@@ -20,17 +19,17 @@ function storeTestResults(result) {
       fullyLoadedTime: resultFV.fullyLoaded,
       fullyLoadedRequests: resultFV.requestsFull,
       fullyLoadedBytesIn: resultFV.bytesIn,
-      waterfallView: runs[1].firstView.images.waterfall,
-      connectionView: runs[1].firstView.images.connectionView,
+      waterfallView: result.runs[1].firstView.images.waterfall,
+      connectionView: result.runs[1].firstView.images.connectionView,
     }
   });
 
-  console.log('Test results stored for test ID: result.testId');
+  // console.log('Test results stored for test ID: result.testId');
 }
 
 // Get the result results in json format
-function fetchTestResults(testId) {
-  console('Looking up test results...');
+function fetchTestResults(testId, req, res) {
+  // console('Looking up test results...');
   const testResultsUrl = `https://www.webpagetest.org/jsonResult.php?test=${testId}`;
   https.get(testResultsUrl, function(res) {
     var body = '';
@@ -39,10 +38,11 @@ function fetchTestResults(testId) {
       body += d;
     });
     res.on('end', function() {
-      storeTestResults(JSON.parse(body).data);
+      storeTestResults(JSON.parse(body).data, req);
     });
   }).on('error', function(e) {
-    console.log("Got error: " + e.message);
+    res.send("Got error: " + e.message);
+    // console.log("Got error: " + e.message);
   });
 }
 

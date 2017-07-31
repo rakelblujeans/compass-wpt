@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/webpagetest', function(req, res, next) {
-  helpers.fetchTestResults(req.query.id);
+  helpers.fetchTestResults(req.query.id, req, res);
 });
 
 router.get('/charts', function(req, res, next) {

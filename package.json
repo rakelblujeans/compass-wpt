@@ -27,6 +27,7 @@
     "mongodb": "2.2.30",
     "nodemon": "1.11.0",
     "rimraf": "2.6.1",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "webpagetest": "^0.3.5"
   }
 }
