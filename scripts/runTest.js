@@ -9,7 +9,7 @@ wpt.runTest('https://www.compass.com/search/sales/nyc/', {
   runs: 1,
   video: true,
   // dryRun: true,
-  pingback: 'https://netibdagvm.localtunnel.me/webpagetest'
+  pingback: 'https://compass-wpt.herokuapp.com/webpagetest'
 }, function(err, result) {
   console.log(err || result);
 });
