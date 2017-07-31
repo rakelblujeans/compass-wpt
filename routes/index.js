@@ -1,15 +1,22 @@
 var express = require('express');
 var router = express.Router();
+var app = require('../app');
+
 var helpers = require('../scripts/helpers')
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.send('Welcome! Why don\'t you run a test by hitting /webpagetest');
 });
 
 router.get('/webpagetest', function(req, res, next) {
-  // res.status(200).send(`Got results! ${req.query.id}`)
-  helpers.lookUpTestResults(req.query.id);
+  helpers.fetchTestResults(req.query.id);
+});
+
+router.get('/charts', function(req, res, next) {
+  const cursor = req.db.collection('results').find();
+  cursor.toArray().then((records) => {
+    res.send(records);
+  });
 });
 
 module.exports = router;
