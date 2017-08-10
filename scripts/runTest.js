@@ -1,6 +1,6 @@
 // TODO: Test different URLs
 
-var WebPageTest = require('WebPageTest');
+var WebPageTest = require('webpagetest');
 var wpt = new WebPageTest('https://www.webpagetest.org/', 'A.5d516bf1ca465c213f41787574d5bb26');
 
 console.log('Running test');
