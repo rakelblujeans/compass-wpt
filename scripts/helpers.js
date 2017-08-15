@@ -1,9 +1,9 @@
 var https = require('https');
 
 function storeTestResults(result, req) {
-  console.log("RUNNING: ", result);
+  console.log("RUNNING: ", result.SpeedIndex);
   if (result) {
-    var resultFV = result;
+    var resultFV = result.firstView;
 
     var collection = req.db.collection('results');
     collection.insert({
