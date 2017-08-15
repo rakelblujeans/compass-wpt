@@ -1,30 +1,32 @@
 var https = require('https');
 
 function storeTestResults(result, req) {
-  console.log("RUNNING: ", result.data);
-  var resultFV = result.data.average.firstView;
+  console.log("RUNNING: ", result);
+  if (result && result.data && result.data.average) {
+    var resultFV = result.data.average.firstView;
 
-  var collection = req.db.collection('results');
-  collection.insert({
-    testId: result.id,
-    url: result.url,
-    summary: result.summary,
-    timestamp: new Date().getTime(),
-    firstView: {
-      loadTime: resultFV.loadTime,
-      ttfb: resultFV.TTFB,
-      render: resultFV.render,
-      speedIndex: resultFV.SpeedIndex,
-      domElements: resultFV.domElements,
-      docCompleteRequests: resultFV.requestsDoc,
-      docCompleteBytesIn: resultFV.bytesInDoc,
-      fullyLoadedTime: resultFV.fullyLoaded,
-      fullyLoadedRequests: resultFV.requestsFull,
-      fullyLoadedBytesIn: resultFV.bytesIn,
-      waterfallView: result.runs[1].firstView.images.waterfall,
-      connectionView: result.runs[1].firstView.images.connectionView,
-    }
-  });
+    var collection = req.db.collection('results');
+    collection.insert({
+      testId: result.id,
+      url: result.url,
+      summary: result.summary,
+      timestamp: new Date().getTime(),
+      firstView: {
+        loadTime: resultFV.loadTime,
+        ttfb: resultFV.TTFB,
+        render: resultFV.render,
+        speedIndex: resultFV.SpeedIndex,
+        domElements: resultFV.domElements,
+        docCompleteRequests: resultFV.requestsDoc,
+        docCompleteBytesIn: resultFV.bytesInDoc,
+        fullyLoadedTime: resultFV.fullyLoaded,
+        fullyLoadedRequests: resultFV.requestsFull,
+        fullyLoadedBytesIn: resultFV.bytesIn,
+        waterfallView: result.runs[1].firstView.images.waterfall,
+        connectionView: result.runs[1].firstView.images.connectionView,
+      }
+    });
+  }
 
   // console.log('Test results stored for test ID: result.testId');
 }
