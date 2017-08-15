@@ -1,7 +1,7 @@
 var https = require('https');
 
 function storeTestResults(result, req) {
-  console.log("\nAVERAGE: ", result.average);
+  console.log("\RUNNING: ", Object.key(result);
   if (result && result.average) {
     var resultFV = result.average.firstView;
 

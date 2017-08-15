@@ -7,7 +7,7 @@ console.log('Running test');
 wpt.runTest('https://www.compass.com/search/sales/nyc/', {
   connectivity: 'Cable',
   location: 'Dulles:Chrome',
-  firstViewOnly: false,
+  firstViewOnly: true,
   runs: 1,
   video: true,
   // dryRun: true,
