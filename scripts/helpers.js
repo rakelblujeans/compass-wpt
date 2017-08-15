@@ -1,7 +1,7 @@
 var https = require('https');
 
 function storeTestResults(result, req) {
-  console.log("RUNNING: ", result.SpeedIndex);
+  console.log("RUNNING: ", Object.keys(result));
   if (result) {
     var resultFV = result.firstView;
 
