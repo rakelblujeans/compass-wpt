@@ -2,8 +2,8 @@ var https = require('https');
 
 function storeTestResults(result, req) {
   console.log("RUNNING: ", result);
-  if (result && result.data && result.data.average) {
-    var resultFV = result.data.average.firstView;
+  if (result) {
+    var resultFV = result;
 
     var collection = req.db.collection('results');
     collection.insert({
