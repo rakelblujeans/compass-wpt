@@ -17,7 +17,7 @@ router.get('/charts', function(req, res, next) {
   const cursor = req.db.collection('results').find({
     "url": "https://www.compass.com/search/sales/nyc/"
   }).sort({
-    "created_at": 1 // asc
+    "timestamp": 1 // asc
   });
   cursor.toArray().then((records) => {
     res.send(records);
