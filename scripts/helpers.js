@@ -10,6 +10,7 @@ function storeTestResults(result, req) {
       testId: result.id,
       url: result.url,
       summary: result.summary,
+      label: result.label,
       timestamp: new Date().getTime(),
       firstView: {
         loadTime: resultFV.loadTime,
