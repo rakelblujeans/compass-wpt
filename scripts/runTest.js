@@ -7,7 +7,7 @@ console.log('Running test');
 
 // We fake logging in by just using a copied session variable
 // 'https://www.compass.com/workspace/#/collections',
-const loginScript = wpt.scriptToString([
+const loginSteps = wpt.scriptToString([
   {
     setCookie: [
       'https://www.compass.com',
@@ -39,8 +39,8 @@ const testRuns = [
 ];
 
 testRuns.forEach((test) => {
-  const loginScript = Object.assign(loginScript, {navigate: test.url});
-  const navigateSteps = test.login ? loginScript : url;
+  const loginScript = Object.assign(loginSteps, {navigate: test.url});
+  const navigateSteps = test.login ? loginScript : test.url;
 
   wpt.runTest(
     navigateSteps,
