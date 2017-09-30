@@ -12,9 +12,9 @@ router.get('/webpagetest', function(req, res, next) {
   helpers.fetchTestResults(req.query.id, req, res);
 });
 
-// TODO: take label as param
 router.get('/charts', function(req, res, next) {
   let filter = {};
+  console.log('QUERY', req.query);
   if (!req.query || !req.query.label) {
     filter.url = 'https://www.compass.com/search/sales/nyc/';
   } else {
