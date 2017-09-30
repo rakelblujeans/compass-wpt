@@ -26,10 +26,12 @@ router.get('/charts', function(req, res, next) {
     filter.label = req.query.label;
   }
 
-  filter.timestamp = {
-    '$gt': req.query.from,
-    '$lte': req.query.to,
-  };
+  if (req.query.from && req.query.to) {
+    filter.timestamp = {
+      '$gt': parseInt(req.query.from, 10),
+      '$lte': parseInt(req.query.to, 10),
+    };
+  }
 
   const cursor = req.db.collection('results').find(filter)
     .sort({
