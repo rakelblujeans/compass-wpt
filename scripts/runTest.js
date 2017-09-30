@@ -34,6 +34,11 @@ const testRuns = [
     label: 'Consumer Search NYC - Logged In',
     login: true,
   },
+  {
+    url: 'https://www.compass.com/agent/#/search/sales',
+    label: 'Agent Search NYC',
+    login: true,
+  },
 ];
 
 testRuns.forEach((test) => {
