@@ -12,7 +12,10 @@ router.get('/webpagetest', function(req, res, next) {
   helpers.fetchTestResults(req.query.id, req, res);
 });
 
-// TODO: take time as params
+// Clients can search by
+// - test label (i.e., test category)
+// - start date ('from')
+// - end date ('to')
 router.get('/charts', function(req, res, next) {
   let filter = {};
   console.log('QUERY', req.query);
@@ -22,6 +25,11 @@ router.get('/charts', function(req, res, next) {
   } else {
     filter.label = req.query.label;
   }
+
+  filter.timestamp = {
+    '$gt': req.query.from,
+    '$lte': req.query.to,
+  };
 
   const cursor = req.db.collection('results').find(filter)
     .sort({
