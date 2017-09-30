@@ -1,5 +1,3 @@
-// TODO: Test different URLs
-
 var WebPageTest = require('webpagetest');
 var wpt = new WebPageTest('https://www.webpagetest.org/', 'A.5d516bf1ca465c213f41787574d5bb26');
 
@@ -11,7 +9,7 @@ const loginSteps = wpt.scriptToString([
   {
     setCookie: [
       'https://www.compass.com',
-      'session=fd0xlkAoAc9j4VKTn/qNJXbdBQs=?_fresh=STAwCi4=&_id=Uyc5Njg3ZDBmMWZjZjJjNGUyNzQxZGJiZDVjYTg3YmEzMicKcDEKLg==&user_id=Uyc1OGM5ZjJjZTQxYWE2NTQ1YTgyZmYxZWMnCnAxCi4='
+      'session=R0MFqaJJOsWKHk+0Rxv41hdMz2Y=?_fresh=STAwCi4=&_id=UydjMDk5ZjljNWUwMTUyNjYzZDE0ZDAyMmMwZWEzN2I2YicKcDEKLg==&user_id=Uyc1OGM5ZjJjZTQxYWE2NTQ1YTgyZmYxZWMnCnAxCi4='
     ]
   },
 ]);
@@ -31,11 +29,11 @@ const testRuns = [
     label: 'Consumer Search NYC - Anonymous',
     login: false,
   },
-  // {
-  //   url: 'https://www.compass.com/search/sales/nyc/',
-  //   label: 'Consumer Search NYC - Logged In',
-  //   login: true,
-  // },
+  {
+    url: 'https://www.compass.com/search/sales/nyc/',
+    label: 'Consumer Search NYC - Logged In',
+    login: true,
+  },
 ];
 
 testRuns.forEach((test) => {
@@ -51,27 +49,3 @@ testRuns.forEach((test) => {
       console.log(err || result);
     });
 });
-
-
-// // Search - anonymous user
-// wpt.runTest(
-//   'https://www.compass.com/search/sales/nyc/',
-//   Object.assign(options, {
-//     label: 'Consumer Search NYC - anonymous'
-//   }),
-//   function(err, result) {
-//     console.log(err || result);
-//   });
-
-// // Search - logged in
-// wpt.runTest(
-//   Object.assign(loginScript, {
-//     navigate: 'https://www.compass.com/search/sales/nyc/',
-//   }),
-//   Object.assign(options, {
-//     label: 'Consumer Search NYC - logged in'
-//   }),
-//   function(err, result) {
-//     console.log(err || result);
-//   });
-
